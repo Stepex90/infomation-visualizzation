@@ -7,7 +7,9 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	</head>
 		  <body>
-		<h4>ISTRUZIONI: click sinistro del mouse per avviare dell'animazione, i triangoli si sposteranno verso il bordo allontanandosi dalla posizione corrente del mouse</h4>
+		<h4>ISTRUZIONI: click sinistro del mouse per avviare dell'animazione, i triangoli si 
+		 sposteranno verso il bordo allontanandosi dalla posizione corrente del mouse</h4>
+		 
 <script charset="utf-8">
 $(document).ready(init());
 function init() {
@@ -24,22 +26,22 @@ G = [];
 started = false;
 
 		d3.select("body")
-			.append("div")
-			.attr("id","svgContainer");
+		  .append("div")
+		  .attr("id","svgContainer");
 
 		svg = d3.select("#svgContainer")
-					  .append("svg")
-            .attr("width", width)
-            .attr("height", height);
+		        .append("svg")
+                        .attr("width", width)
+                        .attr("height", height);
 
     rectangle =  svg.append("rect")
                     .attr("x", 0)
                     .attr("y", 0)
                     .attr("width", width)
                     .attr("height", height)
-									  .attr("fill", "none")
-									  .attr("stroke","black")
- 									  .attr("stroke-width", 2);
+		    .attr("fill", "none")
+		    .attr("stroke","black")
+ 		    .attr("stroke-width", 2);
 
 		 $("#svgContainer").mousedown(function (e) {
 			 	if (!started) {
@@ -53,7 +55,7 @@ started = false;
 for (var i = 0; i < 30; i++) {
 
   G[i] = svg.append("g")
-  			 	  .attr("id",i);
+  	    .attr("id",i);
 
   Nodes[i]=generate_triangle(i);
 
@@ -71,7 +73,7 @@ function generate_triangle(i){
 
 	  return  G[i].append("svg:polygon")
 	              .attr("points", function(){
-	                                         return value =  (x*s)	  		 	+','+ 	(y*s-s) 			  +' '+
+	                                         return value =  (x*s)	  	+','+ 	(y*s-s)         +' '+
 	                                                         (x*s-s*sin30) 	+','+ 	(y*s + s*cos30)	+' '+
 	                                                         (x*s+s*sin30) 	+','+ 	(y*s + s*cos30)})
 	              .attr("baricentro", b_temp)
@@ -97,8 +99,8 @@ for (var i = 0; i < 30; i++) {
 	var raggio = Nodes[i][0][0].attributes[2].nodeValue;
 
 	var r = Math.floor(Math.random() * 360);
-  var w = Math.floor(Math.random() * (width - 2*raggio) + 2*raggio);
-  var h = Math.floor(Math.random() * (height - 2*raggio) + 2*raggio);
+        var w = Math.floor(Math.random() * (width - 2*raggio) + 2*raggio);
+        var h = Math.floor(Math.random() * (height - 2*raggio) + 2*raggio);
 
 	//condition border limit
 	if(w+raggio>0)
@@ -181,9 +183,9 @@ function start() {
 function update_position(i, dx, dy, r) {
 
 			G[i].transition()
-					.duration(updateFrequency)
-					.ease("linear")
-					.attr("transform","translate("+dx+","+dy+")rotate("+r+")");
+			    .duration(updateFrequency)
+			    .ease("linear")
+			    .attr("transform","translate("+dx+","+dy+")rotate("+r+")");
 
 			var Cx = dx.toString();
 			var Cy = dy.toString();
